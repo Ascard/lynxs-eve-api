@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
-	<id>temar:TEA</id>
+	<id>lynx:LEA</id>
 	<version>1.1.2</version>
 
 	<file name="$sourcedir/Subs.php">
@@ -15,7 +15,7 @@
 {
 	global $context, $modSettings, $user_info, $txt, $scripturl;
 
-	loadLanguage('TEA');
+	loadLanguage('LEA');
 ]]></add>
 		</operation>
 		<operation>
@@ -26,9 +26,9 @@
 				'href' => $scripturl . '?action=pm',
 				'show' => $context['allow_pm'],
 ]]></search>
-			<add><![CDATA[					'tea' => array(
-						'title' => $txt['tea_tea'],
-						'href' => $scripturl . '?action=profile;area=tea',
+			<add><![CDATA[					'lea' => array(
+						'title' => $txt['lea_lea'],
+						'href' => $scripturl . '?action=profile;area=lea',
 						'show' => true,
 					),
 				),

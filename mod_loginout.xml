@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<id>lynx:LEA</id>
+	<version>1.00</version>
+
+	<file name="$sourcedir/LogInOut.php">
+
+		<operation>
+			<search position="replace"><![CDATA[	// You forgot to type your username, dummy!]]></search>
+			<add><![CDATA[	if (isset($_GET["characterHash"])) {
+		global $lea;
+		return $lea->login();
+	}
+
+	// You forgot to type your username, dummy!]]></add>
+		</operation>
+
+		<operation>
+			<search position="replace"><![CDATA[// Are you guessing with a script?
+	checkSession('post');]]></search>
+			<add><![CDATA[// Are you guessing with a script?
+	checkSession('request');]]></add>
+		</operation>
+
+	</file>
+
+</modification>

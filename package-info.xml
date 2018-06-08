@@ -1,69 +1,69 @@
 <?xml version="1.0"?>
 <!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
-	<id>temar:TEA</id>
-	<name>Temars EVE API</name>
-	<type>modification</type>
-	<version>1.3.1 r7</version>
-	<install for="1.1 - 1.1.99">
-		<readme type="file">readme.txt</readme>
-		<readme type="inline" parsebbc="true">[color=red]Error! This mod does not support your version of SMF.[/color]</readme>
-	</install>
-	<install>
-		<readme type="inline" parsebbc="true">This will Install the Temar's EVE API Mod.</readme>
-		<modification type="file">mod_index.xml</modification>
-		<modification type="file">mod_admin.xml</modification>
-		<modification type="file">mod_subs.xml</modification>
-		<modification type="file">mod_subs_members.xml</modification>
-		<modification type="file">mod_profile.xml</modification>
-		<modification type="file">mod_profile_modify.xml</modification>
-		<modification type="file">mod_register.xml</modification>
-		<modification type="file">mod_register_template.xml</modification>
-		<modification type="file">mod_profile_template.xml</modification>
-		<modification type="file">mod_managepermissions.xml</modification>
-		<modification type="file">mod_sched_tasks.xml</modification>
-		<require-file name="TEA.php" destination="$sourcedir" />
-		<require-file name="TEAC.php" destination="$sourcedir" />
-		<require-file name="TEA_TS.php" destination="$sourcedir" />
-		<require-file name="TEA_Jabber.php" destination="$sourcedir" />
-		<require-file name="TEA_Jabber_OF.php" destination="$sourcedir" />
-		<require-file name="TEA_SkillDump.php" destination="$sourcedir" />
-		<require-file name="TEA_Roles.php" destination="$sourcedir" />
-		<require-file name="TEA.english.php" destination="$languagedir" />
-		<require-file name="tea.gif" destination="$imagesdir/admin" />
-		<require-file name="esam_upgrade.php" destination="$boarddir" />
-		<require-dir name="TEA" destination="$boarddir" />
-		<require-dir name="TS3_Class" destination="$sourcedir" />
-		<code>tables.php</code>
-		<remove-file name="$boarddir/esam_upgrade.php" />
-		<code>add_schedule.php</code>
-	</install>
-	<uninstall>
-		<readme type="inline">This will uninstall the Temar's EVE API Mod.</readme>
-		<modification type="file" reverse="true">mod_index.xml</modification>
-		<modification type="file" reverse="true">mod_admin.xml</modification>
-		<modification type="file" reverse="true">mod_subs.xml</modification>
-		<modification type="file" reverse="true">mod_subs_members.xml</modification>
-		<modification type="file" reverse="true">mod_profile.xml</modification>
-		<modification type="file" reverse="true">mod_profile_modify.xml</modification>
-		<modification type="file" reverse="true">mod_register.xml</modification>
-		<modification type="file" reverse="true">mod_register_template.xml</modification>
-		<modification type="file" reverse="true">mod_profile_template.xml</modification>
-		<modification type="file" reverse="true">mod_managepermissions.xml</modification>
-		<modification type="file" reverse="true">mod_sched_tasks.xml</modification>
-		<remove-file name="$sourcedir/TEA.php" />
-		<remove-file name="$sourcedir/TEAC.php" />
-		<remove-file name="$sourcedir/TEA_TS.php" />
-		<remove-file name="$sourcedir/TEA_Jabber.php" />
-		<remove-file name="$sourcedir/TEA_Jabber_OF.php" />
-		<remove-file name="$boarddir/TEA_xmlhttp.php" />
-		<remove-file name="$sourcedir/TEA_Roles.php" />
-		<remove-file name="$sourcedir/TEA_SkillDump.php" />
-		<remove-file name="$languagedir/TEA.english.php" />
-		<remove-file name="$imagesdir/admin/tea.gif" />
-		<remove-file name="$boarddir/esam_upgrade.php" />
-		<remove-dir name="$boarddir/TEA" />
-		<remove-dir name="$sourcedir/TS3_Class" />
-		<code>del_schedule.php</code>
-	</uninstall>
+    <id>lynx:LEA</id>
+    <name>LYnx's EVE API</name>
+    <type>modification</type>
+    <version>0.0.1</version>
+    <install>
+        <modification type="file">mod_index.xml</modification>
+        <modification type="file">mod_admin.xml</modification>
+        <modification type="file">mod_subs.xml</modification>
+        <modification type="file">mod_profile.xml</modification>
+        <modification type="file">mod_profile_modify.xml</modification>
+        <modification type="file">mod_register.xml</modification>
+        <modification type="file">mod_loginout.xml</modification>
+        <modification type="file">mod_login_template.xml</modification>
+        <modification type="file">mod_register_template.xml</modification>
+        <modification type="file">mod_profile_template.xml</modification>
+        <modification type="file">mod_managepermissions.xml</modification>
+        <require-file name="LEA.php" destination="$sourcedir"/>
+        <require-file name="LEAC.php" destination="$sourcedir"/>
+        <require-file name="LEA_TS.php" destination="$sourcedir"/>
+        <require-file name="LEA_Cron.php" destination="$sourcedir"/>
+        <require-file name="LEA_TS_Cron_Access.php" destination="$sourcedir"/>
+        <require-file name="LEA_TS_Cron_Names.php" destination="$sourcedir"/>
+        <require-file name="LEA_xmlhttp.php" destination="$boarddir"/>
+        <require-file name="LEA_SkillDump.php" destination="$sourcedir"/>
+        <require-file name="LEA_Roles.php" destination="$sourcedir"/>
+        <require-file name="LEA.english.php" destination="$languagedir"/>
+        <require-file name="lea.gif" destination="$imagesdir/admin"/>
+        <require-file name="esam_upgrade.php" destination="$boarddir"/>
+        <require-file name="lea.css" destination="$themedir/css"/>
+        <require-dir name="TS3_Class" destination="$sourcedir"/>
+        <!--<code>tables.php</code>-->
+        <code>install.php</code>
+        <remove-file name="$boarddir/esam_upgrade.php"/>
+    </install>
+
+    <uninstall>
+        <readme type="inline">This will uninstall the LYnx's EVE API Mod.</readme>
+        <modification type="file" reverse="true">mod_index.xml</modification>
+        <modification type="file" reverse="true">mod_admin.xml</modification>
+        <modification type="file" reverse="true">mod_subs.xml</modification>
+        <modification type="file" reverse="true">mod_profile.xml</modification>
+        <modification type="file" reverse="true">mod_profile_modify.xml</modification>
+        <modification type="file" reverse="true">mod_register.xml</modification>
+        <modification type="file" reverse="true">mod_loginout.xml</modification>
+        <modification type="file" reverse="true">mod_login_template.xml</modification>
+        <modification type="file" reverse="true">mod_register_template.xml</modification>
+        <modification type="file" reverse="true">mod_profile_template.xml</modification>
+        <modification type="file" reverse="true">mod_managepermissions.xml</modification>
+        <remove-file name="$sourcedir/LEA.php"/>
+        <remove-file name="$sourcedir/LEA_TS.php"/>
+        <remove-file name="$sourcedir/LEAC.php"/>
+        <remove-file name="$sourcedir/LEA_Cron.php"/>
+        <remove-file name="$sourcedir/LEA_TS_Cron_Access.php"/>
+        <remove-file name="$sourcedir/LEA_TS_Cron_Names.php"/>
+        <remove-file name="$sourcedir/LEA_xmlhttp.php"/>
+        <remove-file name="$boarddir/LEA_xmlhttp.php"/>
+        <remove-file name="$sourcedir/LEA_Roles.php"/>
+        <remove-file name="$sourcedir/LEA_SkillDump.php"/>
+        <remove-file name="$languagedir/LEA.english.php"/>
+        <remove-file name="$imagesdir/admin/lea.gif"/>
+        <remove-file name="$boarddir/esam_upgrade.php"/>
+        <remove-file name="$themedir/css/lea.css"/>
+        <remove-die name="$sourcedir/TS3_Class"/>
+        <code>uninstall.php</code>
+    </uninstall>
 </package-info>

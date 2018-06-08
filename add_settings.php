@@ -19,20 +19,20 @@ $overwrite_old_settings = false;
 
 // List settings here in the format: setting_key => default_value.  Escape any "s. (" => \")
 $mod_settings = array(
-	'tea_enable' => '0',
-	'tea_userid' => '',
-	'tea_api' => '',
+	'lea_enable' => '0',
+	'lea_userid' => '',
+	'lea_api' => '',
 );
 
 /******************************************************************************/
 	function query($sql)
 	{
-		$return = mysql_query($sql);
+		$return = mysqli_query($sql);
 
 		if (!$return)
 		{
 			//echo $sql;
-			echo mysql_error();
+			echo mysqli_error();
 			return false;
 		}
 		else

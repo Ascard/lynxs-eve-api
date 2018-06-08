@@ -33,13 +33,13 @@ if(isset($_GET['force']))
 	function esamup_select($sql, $result_form=MYSQL_NUM, $error=TRUE)//MYSQL_ASSOC = field names
 	{
 		$data = "";
-		$result = mysql_query($sql);
+		$result = mysqli_query($sql);
 
 		if (!$result)
 		{
 			//echo $sql;
 			if($error)
-				echo "<BR>".mysql_error()."<BR>";
+				echo "<BR>".mysqli_error()."<BR>";
 			return false;
 		}
 
@@ -58,12 +58,12 @@ if(isset($_GET['force']))
 	}
 	function esamup_query($sql)
 	{
-		$return = mysql_query($sql);
+		$return = mysqli_query($sql);
 
 		if (!$return)
 		{
 			//echo $sql;
-			echo mysql_error();
+			echo mysqli_error();
 			return false;
 		}
 		else
@@ -76,14 +76,14 @@ function run_upgrade()
 {
 	Global $db_prefix;
 
-	$info['name'] = 'tea_api';
+	$info['name'] = 'lea_api';
 	$info['esam'] = 'esam_api';
 
-	$cs['GLOBAL_REQUIRED_API'] = array('tea_regreq', 1);
-	$cs['DISPLAY_EVE_NAME'] = array('tea_usecharname', 1);
-	$cs['ADD_CORP_TICKER'] = array('tea_custom_name', 1);
-	$cs['DISPLAY_EVE_PORTRAIT'] = array('tea_avatar_enabled', 1);
-	//$cs['DISPLAY_CORP_TITLES'] = array('tea_regreq', 1);
+	$cs['GLOBAL_REQUIRED_API'] = array('lea_regreq', 1);
+	$cs['DISPLAY_EVE_NAME'] = array('lea_usecharname', 1);
+	$cs['ADD_CORP_TICKER'] = array('lea_custom_name', 1);
+	$cs['DISPLAY_EVE_PORTRAIT'] = array('lea_avatar_enabled', 1);
+	//$cs['DISPLAY_CORP_TITLES'] = array('lea_regreq', 1);
 
 	$check = esamup_check_table($db_prefix.$info['name']);
 	$esam = esamup_check_table($db_prefix.$info['esam']);
@@ -112,7 +112,7 @@ function run_upgrade()
 			foreach($apis as $api)
 			{
 				esamup_query("
-					REPLACE INTO ".$db_prefix."tea_api
+					REPLACE INTO ".$db_prefix."lea_api
 						(ID_MEMBER, userid, api)
 					VALUES 
 					('".$api[0]."', '".$api[1]."', '".$api[2]."')");
@@ -123,14 +123,14 @@ function run_upgrade()
 		if(!empty($rules))
 		{
 			Global $sourcedir;
-			require_once($sourcedir.'/TEA_SkillDump.php');
+			require_once($sourcedir.'/LEA_SkillDump.php');
 			$skills = getSkillArray();
 			foreach($rules as $rule)
 			{
 				$type = NULL;
 				$value = NULL;
 				$extra = NULL;
-				$id = esamup_select("SELECT ruleid FROM ".$db_prefix."tea_rules ORDER BY ruleid DESC LIMIT 1");
+				$id = esamup_select("SELECT ruleid FROM ".$db_prefix."lea_rules ORDER BY ruleid DESC LIMIT 1");
 				if(!empty($id))
 					$id = $id[0][0]+1;
 				else
@@ -205,8 +205,8 @@ function run_upgrade()
 			//		die("Invalid Group");
 
 				//if(!$exists)
-				esamup_query("INSERT INTO ".$db_prefix."tea_rules (ruleid, name, main, `group`, andor) VALUES ($id, '$name', $main, $group, '$andor')");
-				esamup_query("INSERT INTO ".$db_prefix."tea_conditions (ruleid, type, value, extra) VALUES ($id, '$type', '$value', '$extra')");
+				esamup_query("INSERT INTO ".$db_prefix."lea_rules (ruleid, name, main, `group`, andor) VALUES ($id, '$name', $main, $group, '$andor')");
+				esamup_query("INSERT INTO ".$db_prefix."lea_conditions (ruleid, type, value, extra) VALUES ($id, '$type', '$value', '$extra')");
 				//if(!isset($types[$_POST['type']]))
 				//	error
 				//elseif(!is_numeric($_POST['id']) && $_POST['id'] != "new")
@@ -219,21 +219,21 @@ function run_upgrade()
 					$type = 'role';
 					$value = 'Director';
 					$extra = '';
-					esamup_query("INSERT INTO ".$db_prefix."tea_conditions (ruleid, type, value, extra) VALUES ($id, '$type', '$value', '$extra')");
+					esamup_query("INSERT INTO ".$db_prefix."lea_conditions (ruleid, type, value, extra) VALUES ($id, '$type', '$value', '$extra')");
 				}
 				if($rule[5] != 'null' && !empty($rule[5]))
 				{
 					$type = 'title';
 					$value = $rule[5];
 					$extra = '';
-					esamup_query("INSERT INTO ".$db_prefix."tea_conditions (ruleid, type, value, extra) VALUES ($id, '$type', '$value', '$extra')");
+					esamup_query("INSERT INTO ".$db_prefix."lea_conditions (ruleid, type, value, extra) VALUES ($id, '$type', '$value', '$extra')");
 				}
 				if(!empty($rule[6]))
 				{
 					$type = 'skill';
 					$value = $skills[$rule[6]];
 					$extra = $rule[7];
-					esamup_query("INSERT INTO ".$db_prefix."tea_conditions (ruleid, type, value, extra) VALUES ($id, '$type', '$value', '$extra')");
+					esamup_query("INSERT INTO ".$db_prefix."lea_conditions (ruleid, type, value, extra) VALUES ($id, '$type', '$value', '$extra')");
 				}
 			}
 		}

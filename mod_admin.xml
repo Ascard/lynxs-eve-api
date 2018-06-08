@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
-	<id>temar:TEA</id>
+	<id>lynx:LEA</id>
 	<version>1.00</version>
 
 	<file name="$sourcedir/Admin.php">
@@ -11,18 +11,17 @@
 		),
 		'layout' => array(
 			'title' => $txt['layout_controls'],]]></search>
-			<add><![CDATA[				'tea' => array(
-					'label' => $txt['tea_tea'],
-					'file' => 'TEA.php',
-					'function' => 'ModifyTEASettings',
-					'icon' => 'tea.gif',
+			<add><![CDATA[				'lea' => array(
+					'label' => $txt['lea_lea'],
+					'file' => 'LEA.php',
+					'function' => 'ModifyLEASettings',
+					'icon' => 'lea.gif',
 					'subsections' => array(
-						'info' => array($txt['tea_info']),
+						'info' => array($txt['lea_info']),
 						'settings' => array($txt['settings']),
-						'rules' => array($txt['tea_rules']),
-						'ts' => array($txt['tea_ts']),
-						'jabber' => array($txt['tea_jabber']),
-						'checks' => array($txt['tea_checks']),
+						'rules' => array($txt['lea_rules']),
+						'ts' => array($txt['lea_ts']),
+						'checks' => array($txt['lea_checks']),
 					),
 				),
 			),

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+	<id>lynx:LEA</id>
+	<version>1.00</version>
+
+	<file name="$themedir/Login.template.php">
+
+		<operation>
+			<search position="replace"><![CDATA[global $context, $settings, $options, $scripturl, $modSettings, $txt;]]></search>
+			<add><![CDATA[global $context, $settings, $options, $scripturl, $modSettings, $txt, $lea;]]></add>
+		</operation>
+
+		<operation>
+			<search position="replace"><![CDATA[<p><input type="submit" value="', $txt['login'], '" class="button_submit" /></p>]]></search>
+			<add><![CDATA[', $lea->loginFields(), '<p><input type="submit" value="', $txt['login'], '" class="button_submit" /></p>]]></add>
+		</operation>
+	</file>
+</modification>

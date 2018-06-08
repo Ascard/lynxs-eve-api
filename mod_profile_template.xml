@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
-	<id>temar:TEA</id>
+	<id>lynx:LEA</id>
 	<version>1.00</version>
 
 	<file name="$themedir/Profile.template.php">
@@ -12,18 +12,18 @@
 	// Can they add this member as a buddy?
 ]]></search>
 			<add><![CDATA[
-	global $sourcedir, $tea, $db_prefix, $txt;
-	$tea -> DisplayAPIinfo($context, $modSettings, $db_prefix, $txt);
+	global $sourcedir, $lea, $db_prefix, $txt;
+	$lea->DisplayAPIinfo($context, $modSettings, $db_prefix, $txt);
 	// Can they add this member as a buddy?
 ]]></add>
 		</operation> -->
 
 <!-- 		<operation>
 			<search position="replace"><![CDATA[function template_error_message()]]></search>
-			<add><![CDATA[function template_ModifyTEA()
+			<add><![CDATA[function template_ModifyLEA()
 {
-	global $tea, $options, $scripturl;
-	$tea -> UserModifyTEA($options, $scripturl);
+	global $lea, $options, $scripturl;
+	$lea->UserModifyLEA($options, $scripturl);
 }
 
 function template_error_message()]]></add>
@@ -34,24 +34,19 @@ function template_error_message()]]></add>
 			<add><![CDATA[
 	if ($context['allow_edit_membergroups'])
 	{
-		global $tea, $context, $txt;
-		$tea -> manaualconfirm($context['member']['id'], $context, $txt);
+		global $lea, $context, $txt;
+		$lea->manaualconfirm($context['member']['id'], $context, $txt);
 	}
 
 		// Fill the select box with all primary member groups that can be assigned to a member.]]></add>
 		</operation>
  -->
 		<operation>
-			<search position="replace"><![CDATA[function template_profile_avatar_select()
-{
-	global $context, $txt, $modSettings;
+			<search position="replace"><![CDATA[global $context, $txt, $modSettings;
 ]]></search>
-			<add><![CDATA[function template_profile_avatar_select()
-{
-	global $context, $txt, $modSettings;
-	Global $tea;
-	$tea -> avatar_option_lock();
-]]></add>
+			<add><![CDATA[global $context, $txt, $modSettings;
+	global $lea;
+	$lea->avatar_option_lock();]]></add>
 		</operation>
 		<operation>
 			<search position="replace"><![CDATA[
@@ -61,10 +56,10 @@ function template_error_message()]]></add>
 			<add><![CDATA[
 
 	// Use Stored Characters to get Eve Avatar
-	if ($modSettings["tea_enable"])
+	if ($modSettings["lea_enable"])
 	{
-		Global $tea;
-		$tea -> avatar_option();
+		global $lea;
+		$lea->avatar_option();
 	}
 
 	echo '
@@ -104,7 +99,7 @@ function template_error_message()]]></add>
 			<add><![CDATA[									', !empty($context['member']['avatar']['allow_server_stored']) ? 'document.getElementById("avatar_server_stored").style.display = "' . ($context['member']['avatar']['choice'] == 'server_stored' ? '' : 'none') . '";' : '', '
 									', !empty($context['member']['avatar']['allow_external']) ? 'document.getElementById("avatar_external").style.display = "' . ($context['member']['avatar']['choice'] == 'external' ? '' : 'none') . '";' : '', '
 									', !empty($context['member']['avatar']['allow_upload']) ? 'document.getElementById("avatar_upload").style.display = "' . ($context['member']['avatar']['choice'] == 'upload' ? '' : 'none') . '";' : '', '
-									', !empty($modSettings["tea_enable"]) ? 'document.getElementById("avatar_tea").style.display = "' . ($context['member']['avatar']['choice'] == 'tea' ? '' : 'none') . '";' : '', '
+									', !empty($modSettings["lea_enable"]) ? 'document.getElementById("avatar_lea").style.display = "' . ($context['member']['avatar']['choice'] == 'lea' ? '' : 'none') . '";' : '', '
 
 									function swap_avatar(type)
 									{
@@ -114,25 +109,25 @@ function template_error_message()]]></add>
 												', !empty($context['member']['avatar']['allow_server_stored']) ? 'document.getElementById("avatar_server_stored").style.display = "";' : '', '
 												', !empty($context['member']['avatar']['allow_external']) ? 'document.getElementById("avatar_external").style.display = "none";' : '', '
 												', !empty($context['member']['avatar']['allow_upload']) ? 'document.getElementById("avatar_upload").style.display = "none";' : '', '
-												', !empty($modSettings["tea_enable"]) ? 'document.getElementById("avatar_tea").style.display = "none";' : '', '
+												', !empty($modSettings["lea_enable"]) ? 'document.getElementById("avatar_lea").style.display = "none";' : '', '
 												break;
 											case "avatar_choice_external":
 												', !empty($context['member']['avatar']['allow_server_stored']) ? 'document.getElementById("avatar_server_stored").style.display = "none";' : '', '
 												', !empty($context['member']['avatar']['allow_external']) ? 'document.getElementById("avatar_external").style.display = "";' : '', '
 												', !empty($context['member']['avatar']['allow_upload']) ? 'document.getElementById("avatar_upload").style.display = "none";' : '', '
-												', !empty($modSettings["tea_enable"]) ? 'document.getElementById("avatar_tea").style.display = "none";' : '', '
+												', !empty($modSettings["lea_enable"]) ? 'document.getElementById("avatar_lea").style.display = "none";' : '', '
 												break;
 											case "avatar_choice_upload":
 												', !empty($context['member']['avatar']['allow_server_stored']) ? 'document.getElementById("avatar_server_stored").style.display = "none";' : '', '
 												', !empty($context['member']['avatar']['allow_external']) ? 'document.getElementById("avatar_external").style.display = "none";' : '', '
 												', !empty($context['member']['avatar']['allow_upload']) ? 'document.getElementById("avatar_upload").style.display = "";' : '', '
-												', !empty($modSettings["tea_enable"]) ? 'document.getElementById("avatar_tea").style.display = "none";' : '', '
+												', !empty($modSettings["lea_enable"]) ? 'document.getElementById("avatar_lea").style.display = "none";' : '', '
 												break;
-											case "avatar_choice_tea":
+											case "avatar_choice_lea":
 												', !empty($context['member']['avatar']['allow_server_stored']) ? 'document.getElementById("avatar_server_stored").style.display = "none";' : '', '
 												', !empty($context['member']['avatar']['allow_external']) ? 'document.getElementById("avatar_external").style.display = "none";' : '', '
 												', !empty($context['member']['avatar']['allow_upload']) ? 'document.getElementById("avatar_upload").style.display = "none";' : '', '
-												', !empty($modSettings["tea_enable"]) ? 'document.getElementById("avatar_tea").style.display = "";' : '', '
+												', !empty($modSettings["lea_enable"]) ? 'document.getElementById("avatar_lea").style.display = "";' : '', '
 												break;
 											case "avatar_choice_none":
 												', !empty($context['member']['avatar']['allow_server_stored']) ? 'document.getElementById("avatar_server_stored").style.display = "none";' : '', '
@@ -144,7 +139,7 @@ function template_error_message()]]></add>
 		<operation>
 			<search position="replace"><![CDATA[								', !empty($context['member']['avatar']['allow_upload']) ? '<input type="radio" onclick="swap_avatar(this); return true;" name="avatar_choice" id="avatar_choice_upload" value="upload"' . ($context['member']['avatar']['choice'] == 'upload' ? ' checked="checked"' : '') . ' class="input_radio" /><label for="avatar_choice_upload"' . (isset($context['modify_error']['bad_avatar']) ? ' class="error"' : '') . '>' . $txt['avatar_will_upload'] . '</label>' : '', ']]></search>
 			<add><![CDATA[								', !empty($context['member']['avatar']['allow_upload']) ? '<input type="radio" onclick="swap_avatar(this); return true;" name="avatar_choice" id="avatar_choice_upload" value="upload"' . ($context['member']['avatar']['choice'] == 'upload' ? ' checked="checked"' : '') . ' class="input_radio" /><label for="avatar_choice_upload"' . (isset($context['modify_error']['bad_avatar']) ? ' class="error"' : '') . '>' . $txt['avatar_will_upload'] . '</label><br />' : '', '
-								', !empty($modSettings["tea_enable"]) ? '<input type="radio" onclick="swap_avatar(this); return true;" name="avatar_choice" id="avatar_choice_tea" value="tea"' . ($context['member']['avatar']['choice'] == 'tea' ? ' checked="checked"' : '') . ' class="input_radio" /><label for="avatar_choice_upload"' . (isset($context['modify_error']['bad_avatar']) ? ' class="error"' : '') . '>' . $txt['tea_avatar'] . '</label>' : '', ']]></add>
+								', !empty($modSettings["lea_enable"]) ? '<input type="radio" onclick="swap_avatar(this); return true;" name="avatar_choice" id="avatar_choice_lea" value="lea"' . ($context['member']['avatar']['choice'] == 'lea' ? ' checked="checked"' : '') . ' class="input_radio" /><label for="avatar_choice_upload"' . (isset($context['modify_error']['bad_avatar']) ? ' class="error"' : '') . '>' . $txt['lea_avatar'] . '</label>' : '', ']]></add>
 		</operation>
 	</file>
 </modification>

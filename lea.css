@@ -1,0 +1,26 @@
+﻿h3.hr {
+	text-align: center;
+  font-size: 19px;
+  font-weight: 400;
+  color: #8E8E8E;
+  margin: 0px 0px 16px 0px;
+  position: relative;
+}
+h3.hr:before{
+  width: 135px;
+  height: 1px;
+  background: #8e8e8e;
+  position: absolute;
+  top: 50%;
+  left: 18%;
+  content:'';
+}
+h3.hr:after {
+  width: 135px;
+  height: 1px;
+  background: #8e8e8e;
+  position: absolute;
+  top: 50%;
+  right: 18%;
+  content:'';
+}
